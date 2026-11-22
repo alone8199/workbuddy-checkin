@@ -1,0 +1,17 @@
+# 凭据与运行产物（绝不可提交）
+credentials.json
+checkin.log
+*.log
+.dev.vars
+.wrangler/
+.env
+.env.*
+
+# 编辑器 / 系统
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+
+# WorkBuddy 本地会话数据
+.workbuddy/
