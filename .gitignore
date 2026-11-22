@@ -15,3 +15,6 @@ Thumbs.db
 
 # WorkBuddy 本地会话数据
 .workbuddy/
+
+# 脚本运行时缓存（自动定位到的客户端路径）
+.cache/

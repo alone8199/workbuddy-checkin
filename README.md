@@ -44,6 +44,15 @@
 node wb-export-token.cjs      # 生成 credentials.json
 ```
 
+脚本会自己找到 WorkBuddy 装在哪，不用改代码：先看 `--exe` 参数、`WORKBUDDY_EXE` 环境变量、上次成功的缓存，再问运行中的进程、注册表卸载项，最后退到常见目录和浅层磁盘扫描。
+
+```bash
+node wb-export-token.cjs --find                        # 只打印定位到的路径，不碰客户端
+node wb-export-token.cjs --exe "D:\WB\WorkBuddy\WorkBuddy.exe"   # 实在找不到就手动指定
+```
+
+> 运行前先退出 WorkBuddy：脚本会关掉它，再以 `--inspect` 重启来读取 token，导出完成后客户端保持运行。
+
 内容形如：
 
 ```json
@@ -137,7 +146,7 @@ npm run tail     # 看线上实时日志
 ├── wb-checkin-server.cjs      Node 版签到主程序（单次执行）
 ├── wb-panel.cjs               Node 版面板（端口 7777，?key= 鉴权）
 ├── wb-checkin-random.sh       服务器 cron 入口：随机延迟 0~60 分钟后执行
-├── wb-export-token.cjs        从本机客户端导出 accessToken
+├── wb-export-token.cjs        从本机客户端导出 accessToken（自动定位安装目录）
 ├── decrypt-auth.cjs           解密本地保存的认证信息
 └── wb-inspect.mjs             调试：查看账号与活动状态
 ```
